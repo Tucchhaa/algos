@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -58,12 +59,13 @@ int main(){
     }
 
     fill(vis.begin(), vis.end(), false);
+    reverse(order.begin(), order.end())
     vector<vector<int>> scc;
 
-    for(int i=0; i < n; i++) {
-        if(!vis[i]) {
+    for(auto& v: order) {
+        if(!vis[v]) {
             vector<int> component;
-            dfs2(i, component);
+            dfs2(v, component);
             scc.push_back(component);
         }
     }
